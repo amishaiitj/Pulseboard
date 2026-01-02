@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,6 +21,67 @@
             overflow-x: hidden;
         }
 
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.3);
+            z-index: 9999;
+        }
+
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: #00ff88;
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem;
+            color: #ccc;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background: #00ff88;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #00ff88;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .section {
+            scroll-margin-top: 90px;
+        }
+
         .matrix-bg {
             position: fixed;
             top: 0;
@@ -36,21 +98,24 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 255, 136, 0.03) 0px,
-                transparent 2px,
-                transparent 4px,
-                rgba(0, 255, 136, 0.03) 4px
-            );
+            background: repeating-linear-gradient(0deg,
+                    rgba(0, 255, 136, 0.03) 0px,
+                    transparent 2px,
+                    transparent 4px,
+                    rgba(0, 255, 136, 0.03) 4px);
             pointer-events: none;
             z-index: 9998;
             animation: scanlineMove 10s linear infinite;
         }
 
         @keyframes scanlineMove {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(100px); }
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(100px);
+            }
         }
 
         .glow-line {
@@ -66,10 +131,25 @@
         }
 
         @keyframes glowScan {
-            0%, 100% { top: 0; opacity: 0; }
-            5% { opacity: 1; }
-            50% { top: 100%; opacity: 1; }
-            55% { opacity: 0; }
+
+            0%,
+            100% {
+                top: 0;
+                opacity: 0;
+            }
+
+            5% {
+                opacity: 1;
+            }
+
+            50% {
+                top: 100%;
+                opacity: 1;
+            }
+
+            55% {
+                opacity: 0;
+            }
         }
 
         .hero {
@@ -98,14 +178,20 @@
             animation: pulseExpand 3s ease-out infinite;
         }
 
-        .pulse-circle:nth-child(2) { animation-delay: 1s; }
-        .pulse-circle:nth-child(3) { animation-delay: 2s; }
+        .pulse-circle:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .pulse-circle:nth-child(3) {
+            animation-delay: 2s;
+        }
 
         @keyframes pulseExpand {
             0% {
                 transform: scale(0.5);
                 opacity: 1;
             }
+
             100% {
                 transform: scale(2);
                 opacity: 0;
@@ -130,8 +216,15 @@
         }
 
         @keyframes gradientFlow {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
         }
 
         .tagline {
@@ -148,6 +241,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -155,8 +249,15 @@
         }
 
         @keyframes flicker {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
         }
 
         .scroll-indicator {
@@ -185,13 +286,27 @@
         }
 
         @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(10px);
+            }
         }
 
         @keyframes scrollDot {
-            0% { top: 10px; opacity: 1; }
-            100% { top: 30px; opacity: 0; }
+            0% {
+                top: 10px;
+                opacity: 1;
+            }
+
+            100% {
+                top: 30px;
+                opacity: 0;
+            }
         }
 
         .container {
@@ -238,8 +353,17 @@
         }
 
         @keyframes blink {
-            0%, 50%, 100% { opacity: 1; }
-            25%, 75% { opacity: 0; }
+
+            0%,
+            50%,
+            100% {
+                opacity: 1;
+            }
+
+            25%,
+            75% {
+                opacity: 0;
+            }
         }
 
         .section-title-line {
@@ -254,7 +378,9 @@
         }
 
         @keyframes expandLine {
-            to { width: 100%; }
+            to {
+                width: 100%;
+            }
         }
 
         .objective-box {
@@ -346,8 +472,15 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         .deliverable-title {
@@ -471,8 +604,15 @@
         }
 
         @keyframes pulse {
-            0%, 100% { transform: translateX(-50%) scale(1); }
-            50% { transform: translateX(-50%) scale(1.1); }
+
+            0%,
+            100% {
+                transform: translateX(-50%) scale(1);
+            }
+
+            50% {
+                transform: translateX(-50%) scale(1.1);
+            }
         }
 
         .week-label {
@@ -536,12 +676,15 @@
                 transform: translateY(100vh) translateX(0) scale(0);
                 opacity: 0;
             }
+
             10% {
                 opacity: 1;
             }
+
             90% {
                 opacity: 1;
             }
+
             100% {
                 transform: translateY(-100vh) translateX(200px) scale(1);
                 opacity: 0;
@@ -604,8 +747,15 @@
         }
 
         @keyframes numberPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
         }
 
         .stat-label {
@@ -640,8 +790,15 @@
         }
 
         @keyframes progressGlow {
-            0%, 100% { box-shadow: 0 0 20px #00ff88; }
-            50% { box-shadow: 0 0 40px #00ff88, 0 0 60px #00ffff; }
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px #00ff88;
+            }
+
+            50% {
+                box-shadow: 0 0 40px #00ff88, 0 0 60px #00ffff;
+            }
         }
 
         .milestones {
@@ -723,27 +880,27 @@
                 font-size: 4rem;
                 letter-spacing: 5px;
             }
-            
+
             .tagline {
                 font-size: 1.2rem;
             }
-            
+
             .section-title {
                 font-size: 2rem;
             }
-            
+
             .timeline::before {
                 left: 0;
             }
-            
+
             .timeline-content {
                 width: 100%;
             }
-            
+
             .timeline-item {
                 flex-direction: column !important;
             }
-            
+
             .timeline-dot {
                 left: 0;
                 transform: translateX(0);
@@ -753,14 +910,26 @@
                 grid-template-columns: 1fr;
             }
         }
-    
     </style>
 </head>
+
 <body>
+    <nav class="navbar">
+        <div class="nav-logo">PulseBoard</div>
+        <ul class="nav-links">
+            <li><a href="#objective">Objective</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#deliverables">Deliverables</a></li>
+            <li><a href="#timeline">Timeline</a></li>
+            <li><a href="#tech">Tech</a></li>
+            <li><a href="#progress">Progress</a></li>
+        </ul>
+    </nav>
+
     <canvas class="matrix-bg" id="matrix"></canvas>
     <div class="scanline"></div>
     <div class="glow-line"></div>
-    
+
     <div class="floating-particles" id="particles"></div>
 
     <section class="hero">
@@ -775,17 +944,18 @@
     </section>
 
     <div class="container">
-        <section class="section" data-section="objective">
+        <section class="section" id="objective" data-section="objective">
             <h2 class="section-title">Objective<span class="section-title-line"></span></h2>
             <div class="objective-box">
                 <p class="objective-text">
-                    To build a simple, real-time app that reads emails, finds campus events, organizes them neatly, 
-                    and notifies students, making it <span style="color: #00ff88;">super easy</span> to know what's happening around campus.
+                    To build a simple, real-time app that reads emails, finds campus events, organizes them neatly,
+                    and notifies students, making it <span style="color: #00ff88;">super easy</span> to know what's
+                    happening around campus.
                 </p>
             </div>
         </section>
 
-         <section class="section" data-section="team">
+        <section class="section" id="team" data-section="team">
             <h2 class="section-title">Mentors<span class="section-title-line"></span></h2>
             <div class="team-grid">
                 <div class="team-card">
@@ -829,15 +999,18 @@
             <h2 class="section-title">Motivation<span class="section-title-line"></span></h2>
             <div class="objective-box">
                 <p class="objective-text">
-                    Every semester, thousands of students miss events, not because they're lazy, but because information 
-                    is scattered across emails, WhatsApp groups, and that one friend who "forgets to tell". PulseBoard fixes 
-                    this chaos by becoming the <span style="color: #00ffff;">single source of truth</span>. Think of it as the 
-                    <span style="color: #00ff88;">Jarvis of your campus schedule</span>, minus the sarcasm… or maybe with some.
+                    Every semester, thousands of students miss events, not because they're lazy, but because information
+                    is scattered across emails, WhatsApp groups, and that one friend who "forgets to tell". PulseBoard
+                    fixes
+                    this chaos by becoming the <span style="color: #00ffff;">single source of truth</span>. Think of it
+                    as the
+                    <span style="color: #00ff88;">Jarvis of your campus schedule</span>, minus the sarcasm… or maybe
+                    with some.
                 </p>
             </div>
         </section>
 
-        <section class="section" data-section="deliverables">
+        <section class="section" id="deliverables" data-section="deliverables">
             <h2 class="section-title">Deliverables<span class="section-title-line"></span></h2>
             <div class="deliverables-grid">
                 <div class="deliverable-card">
@@ -886,13 +1059,14 @@
             </div>
         </section>
 
-        <section class="section" data-section="timeline">
+        <section class="section" id="timeline" data-section="timeline">
             <h2 class="section-title">Timeline<span class="section-title-line"></span></h2>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="week-label">Week 1–2</div>
-                        <p style="color: #ccc; font-size: 1.2rem;">Learn basics together (React, Node, simple email reading)</p>
+                        <p style="color: #ccc; font-size: 1.2rem;">Learn basics together (React, Node, simple email
+                            reading)</p>
                     </div>
                     <div class="timeline-dot"></div>
                 </div>
@@ -920,7 +1094,7 @@
             </div>
         </section>
 
-        <section class="section" data-section="tech">
+        <section class="section" id="tech" data-section="tech">
             <h2 class="section-title">Tech Stack<span class="section-title-line"></span></h2>
             <div class="tech-stack">
                 <div class="tech-badge">Flutter</div>
@@ -932,7 +1106,7 @@
             </div>
         </section>
 
-        <section class="section" data-section="progress">
+        <section class="section" id="progress" data-section="progress">
             <h2 class="section-title">Project Progress<span class="section-title-line"></span></h2>
             <div class="progress-container">
                 <div class="progress-stats">
@@ -949,7 +1123,7 @@
                         <div class="stat-label">Completion</div>
                     </div>
                 </div>
-                
+
                 <div class="progress-bar-container">
                     <div class="progress-bar">
                         <div class="progress-fill" id="progressFill"></div>
@@ -969,15 +1143,15 @@
                         <div class="milestone-content">
                             <h4>⚡ Basic Structure</h4>
                             <p>To work in a smooth Manner</p>
-                        </div> 
+                        </div>
                     </div>
-                    
-                
+
+
                     <div class="milestone-item ">
                         <div class="milestone-dot"></div>
                         <div class="milestone-content">
                             <h4>In Progress: Email Parser</h4>
-                            <p>    Building the core intelligence engine</p>
+                            <p> Building the core intelligence engine</p>
                         </div>
                     </div>
                     <div class="milestone-item">
@@ -999,8 +1173,8 @@
         </section>
 
         <section class="cta-section">
-            <button  class="cta-button">
-                <a href="feature.html" style="text-decoration: none;" >  Join the Revolution</a>
+            <button class="cta-button">
+                <a href="feature.html" style="text-decoration: none;"> Join the Revolution</a>
             </button>
         </section>
     </div>
@@ -1026,7 +1200,7 @@
         function drawMatrix() {
             ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
+
             ctx.fillStyle = '#00ff88';
             ctx.font = fontSize + 'px monospace';
 
@@ -1065,7 +1239,7 @@
 
         // Scroll animations
         const sections = document.querySelectorAll('.section');
-        
+
         const observerOptions = {
             threshold: 0.2,
             rootMargin: '0px 0px -100px 0px'
@@ -1086,19 +1260,20 @@
         // Project Progress Tracker
         const startDate = new Date('2026-01-02'); // Project start date
         const totalDuration = 50; // Total project duration in days
-        
+
         function updateProgress() {
             const now = new Date();
             const daysElapsed = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
             const progressPercent = Math.min(Math.floor((daysElapsed / totalDuration) * 100), 100);
-            
+
             document.getElementById('daysElapsed').textContent = daysElapsed >= 0 ? daysElapsed : 0;
             document.getElementById('progressPercent').textContent = progressPercent >= 0 ? progressPercent + '%' : '0%';
             document.getElementById('progressFill').style.width = (progressPercent >= 0 ? progressPercent : 0) + '%';
         }
-        
+
         updateProgress();
         setInterval(updateProgress, 60000); // Update every minute
     </script>
 </body>
+
 </html>
