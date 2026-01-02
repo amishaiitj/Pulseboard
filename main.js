@@ -1,4 +1,4 @@
-
+ 
         // Optimized Matrix rain effect
         const canvas = document.getElementById('matrix');
         const ctx = canvas.getContext('2d');
@@ -14,7 +14,7 @@
         function drawMatrix() {
             ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
+
             ctx.fillStyle = '#00ff88';
             ctx.font = fontSize + 'px monospace';
 
@@ -53,7 +53,7 @@
 
         // Scroll animations
         const sections = document.querySelectorAll('.section');
-        
+
         const observerOptions = {
             threshold: 0.2,
             rootMargin: '0px 0px -100px 0px'
@@ -74,16 +74,16 @@
         // Project Progress Tracker
         const startDate = new Date('2026-01-02'); // Project start date
         const totalDuration = 50; // Total project duration in days
-        
+
         function updateProgress() {
             const now = new Date();
             const daysElapsed = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
             const progressPercent = Math.min(Math.floor((daysElapsed / totalDuration) * 100), 100);
-            
+
             document.getElementById('daysElapsed').textContent = daysElapsed >= 0 ? daysElapsed : 0;
             document.getElementById('progressPercent').textContent = progressPercent >= 0 ? progressPercent + '%' : '0%';
             document.getElementById('progressFill').style.width = (progressPercent >= 0 ? progressPercent : 0) + '%';
         }
-        
+
         updateProgress();
         setInterval(updateProgress, 60000); // Update every minute
