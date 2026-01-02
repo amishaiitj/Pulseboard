@@ -1,4 +1,4 @@
-
+ 
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap');
 
         * {
@@ -12,6 +12,67 @@
             color: #fff;
             font-family: 'Rajdhani', sans-serif;
             overflow-x: hidden;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.3);
+            z-index: 9999;
+        }
+
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: #00ff88;
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem;
+            color: #ccc;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background: #00ff88;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #00ff88;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .section {
+            scroll-margin-top: 90px;
         }
 
         .matrix-bg {
@@ -30,21 +91,24 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 255, 136, 0.03) 0px,
-                transparent 2px,
-                transparent 4px,
-                rgba(0, 255, 136, 0.03) 4px
-            );
+            background: repeating-linear-gradient(0deg,
+                    rgba(0, 255, 136, 0.03) 0px,
+                    transparent 2px,
+                    transparent 4px,
+                    rgba(0, 255, 136, 0.03) 4px);
             pointer-events: none;
             z-index: 9998;
             animation: scanlineMove 10s linear infinite;
         }
 
         @keyframes scanlineMove {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(100px); }
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(100px);
+            }
         }
 
         .glow-line {
@@ -60,10 +124,25 @@
         }
 
         @keyframes glowScan {
-            0%, 100% { top: 0; opacity: 0; }
-            5% { opacity: 1; }
-            50% { top: 100%; opacity: 1; }
-            55% { opacity: 0; }
+
+            0%,
+            100% {
+                top: 0;
+                opacity: 0;
+            }
+
+            5% {
+                opacity: 1;
+            }
+
+            50% {
+                top: 100%;
+                opacity: 1;
+            }
+
+            55% {
+                opacity: 0;
+            }
         }
 
         .hero {
@@ -92,14 +171,20 @@
             animation: pulseExpand 3s ease-out infinite;
         }
 
-        .pulse-circle:nth-child(2) { animation-delay: 1s; }
-        .pulse-circle:nth-child(3) { animation-delay: 2s; }
+        .pulse-circle:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .pulse-circle:nth-child(3) {
+            animation-delay: 2s;
+        }
 
         @keyframes pulseExpand {
             0% {
                 transform: scale(0.5);
                 opacity: 1;
             }
+
             100% {
                 transform: scale(2);
                 opacity: 0;
@@ -124,8 +209,15 @@
         }
 
         @keyframes gradientFlow {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
         }
 
         .tagline {
@@ -142,6 +234,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -149,8 +242,15 @@
         }
 
         @keyframes flicker {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
         }
 
         .scroll-indicator {
@@ -179,13 +279,27 @@
         }
 
         @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(10px);
+            }
         }
 
         @keyframes scrollDot {
-            0% { top: 10px; opacity: 1; }
-            100% { top: 30px; opacity: 0; }
+            0% {
+                top: 10px;
+                opacity: 1;
+            }
+
+            100% {
+                top: 30px;
+                opacity: 0;
+            }
         }
 
         .container {
@@ -232,8 +346,17 @@
         }
 
         @keyframes blink {
-            0%, 50%, 100% { opacity: 1; }
-            25%, 75% { opacity: 0; }
+
+            0%,
+            50%,
+            100% {
+                opacity: 1;
+            }
+
+            25%,
+            75% {
+                opacity: 0;
+            }
         }
 
         .section-title-line {
@@ -248,7 +371,9 @@
         }
 
         @keyframes expandLine {
-            to { width: 100%; }
+            to {
+                width: 100%;
+            }
         }
 
         .objective-box {
@@ -340,8 +465,15 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         .deliverable-title {
@@ -465,8 +597,15 @@
         }
 
         @keyframes pulse {
-            0%, 100% { transform: translateX(-50%) scale(1); }
-            50% { transform: translateX(-50%) scale(1.1); }
+
+            0%,
+            100% {
+                transform: translateX(-50%) scale(1);
+            }
+
+            50% {
+                transform: translateX(-50%) scale(1.1);
+            }
         }
 
         .week-label {
@@ -530,12 +669,15 @@
                 transform: translateY(100vh) translateX(0) scale(0);
                 opacity: 0;
             }
+
             10% {
                 opacity: 1;
             }
+
             90% {
                 opacity: 1;
             }
+
             100% {
                 transform: translateY(-100vh) translateX(200px) scale(1);
                 opacity: 0;
@@ -598,8 +740,15 @@
         }
 
         @keyframes numberPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
         }
 
         .stat-label {
@@ -634,8 +783,15 @@
         }
 
         @keyframes progressGlow {
-            0%, 100% { box-shadow: 0 0 20px #00ff88; }
-            50% { box-shadow: 0 0 40px #00ff88, 0 0 60px #00ffff; }
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px #00ff88;
+            }
+
+            50% {
+                box-shadow: 0 0 40px #00ff88, 0 0 60px #00ffff;
+            }
         }
 
         .milestones {
@@ -717,27 +873,27 @@
                 font-size: 4rem;
                 letter-spacing: 5px;
             }
-            
+
             .tagline {
                 font-size: 1.2rem;
             }
-            
+
             .section-title {
                 font-size: 2rem;
             }
-            
+
             .timeline::before {
                 left: 0;
             }
-            
+
             .timeline-content {
                 width: 100%;
             }
-            
+
             .timeline-item {
                 flex-direction: column !important;
             }
-            
+
             .timeline-dot {
                 left: 0;
                 transform: translateX(0);
@@ -747,5 +903,4 @@
                 grid-template-columns: 1fr;
             }
         }
-    
-  
+   
