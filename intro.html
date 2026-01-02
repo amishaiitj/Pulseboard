@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PulseBoard | WOC '26</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas class="matrix-bg" id="matrix"></canvas>
+    <div class="scanline"></div>
+    <div class="glow-line"></div>
+    
+    <div class="floating-particles" id="particles"></div>
+
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="pulse-circle"></div>
+            <div class="pulse-circle"></div>
+            <div class="pulse-circle"></div>
+        </div>
+        <h1 class="logo">PulseBoard</h1>
+        <p class="tagline">THE JARVIS OF YOUR CAMPUS</p>
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <div class="container">
+        <section class="section" data-section="objective">
+            <h2 class="section-title">Objective<span class="section-title-line"></span></h2>
+            <div class="objective-box">
+                <p class="objective-text">
+                    To build a simple, real-time app that reads emails, finds campus events, organizes them neatly, 
+                    and notifies students, making it <span style="color: #00ff88;">super easy</span> to know what's happening around campus.
+                </p>
+            </div>
+        </section>
+
+         <section class="section" data-section="team">
+            <h2 class="section-title">Mentors<span class="section-title-line"></span></h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-name">Divyansh Maheshwari</div>
+                    <div class="team-roll">B23CM1015</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-name">Prakhar Goyal</div>
+                    <div class="team-roll">B23CS1106</div>
+                </div>
+            </div>
+            <h2 class="section-title">Mentee <span class="section-title-line"></span></h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-name">Aeshvarya awasthi</div>
+                    <div class="team-roll">b25CH1001</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-name">Krish Chandrakant Kundariya </div>
+                    <div class="team-roll">B25CM1031</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-name">Moksh Kalpeshkumar Girachh</div>
+                    <div class="team-roll">B25ME1047</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-name">Sakariya Aayush Jayeshbhai </div>
+                    <div class="team-roll">B25CM1045</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-name">Amisha Nainwani </div>
+                    <div class="team-roll">B25EE1005)</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-name">Shah Ishika Nimeshkumar </div>
+                    <div class="team-roll">B25EC1036</div>
+                </div>
+            </div>
+        </section>
+        <section class="section" data-section="motivation">
+            <h2 class="section-title">Motivation<span class="section-title-line"></span></h2>
+            <div class="objective-box">
+                <p class="objective-text">
+                    Every semester, thousands of students miss events, not because they're lazy, but because information 
+                    is scattered across emails, WhatsApp groups, and that one friend who "forgets to tell". PulseBoard fixes 
+                    this chaos by becoming the <span style="color: #00ffff;">single source of truth</span>. Think of it as the 
+                    <span style="color: #00ff88;">Jarvis of your campus schedule</span>, minus the sarcasm… or maybe with some.
+                </p>
+            </div>
+        </section>
+
+        <section class="section" data-section="deliverables">
+            <h2 class="section-title">Deliverables<span class="section-title-line"></span></h2>
+            <div class="deliverables-grid">
+                <div class="deliverable-card">
+                    <div class="deliverable-icon">🧠</div>
+                    <h3 class="deliverable-title">Email Intelligence Engine</h3>
+                    <ul class="deliverable-features">
+                        <li>Parse college emails (HTML, PNG, PDF support)</li>
+                        <li>Auto-detect event details: time, venue, organizer</li>
+                        <li>Smart filtering to remove "User Spam"</li>
+                        <li>Special handling for OAs & interviews</li>
+                    </ul>
+                </div>
+
+                <div class="deliverable-card">
+                    <div class="deliverable-icon">📡</div>
+                    <h3 class="deliverable-title">Real-Time Event Radar</h3>
+                    <ul class="deliverable-features">
+                        <li>Live dashboard of all club activities</li>
+                        <li>Calendar view with timeline & filters</li>
+                        <li>Real-time updates via WebSockets</li>
+                        <li>Customizable notification settings</li>
+                    </ul>
+                </div>
+
+                <div class="deliverable-card">
+                    <div class="deliverable-icon">🎪</div>
+                    <h3 class="deliverable-title">Club Portal</h3>
+                    <ul class="deliverable-features">
+                        <li>Push events live with media & tags</li>
+                        <li>Upload previous event photos/videos</li>
+                        <li>Simple polls for engagement</li>
+                        <li>Clash detection for scheduling conflicts</li>
+                    </ul>
+                </div>
+
+                <div class="deliverable-card">
+                    <div class="deliverable-icon">⚡</div>
+                    <h3 class="deliverable-title">Student Personalization</h3>
+                    <ul class="deliverable-features">
+                        <li>Follow clubs/topics you care about</li>
+                        <li>Personalized event feed</li>
+                        <li>Recommender engine for similar events</li>
+                        <li>Private OAs/interview notices</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" data-section="timeline">
+            <h2 class="section-title">Timeline<span class="section-title-line"></span></h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="week-label">Week 1–2</div>
+                        <p style="color: #ccc; font-size: 1.2rem;">Learn basics together (React, Node, simple email reading)</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="week-label">Week 3–4</div>
+                        <p style="color: #ccc; font-size: 1.2rem;">Build the dashboard + notifications</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="week-label">Week 5–6</div>
+                        <p style="color: #ccc; font-size: 1.2rem;">Club portal + media uploads</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="week-label">Week 7+</div>
+                        <p style="color: #ccc; font-size: 1.2rem;">Add cool ideas the team comes up with</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" data-section="tech">
+            <h2 class="section-title">Tech Stack<span class="section-title-line"></span></h2>
+            <div class="tech-stack">
+                <div class="tech-badge">Flutter</div>
+                <div class="tech-badge">React Native</div>
+                <div class="tech-badge">Node.js</div>
+                <div class="tech-badge">WebSockets</div>
+                <div class="tech-badge">MongoDB</div>
+                <div class="tech-badge">Express</div>
+            </div>
+        </section>
+
+        <section class="section" data-section="progress">
+            <h2 class="section-title">Project Progress<span class="section-title-line"></span></h2>
+            <div class="progress-container">
+                <div class="progress-stats">
+                    <div class="stat-box">
+                        <div class="stat-number" id="daysElapsed">0</div>
+                        <div class="stat-label">Days In Development</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Core Features</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number" id="progressPercent">0%</div>
+                        <div class="stat-label">Completion</div>
+                    </div>
+                </div>
+                
+                <div class="progress-bar-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+
+                <div class="milestones">
+                    <div class="milestone-item completed">
+                        <div class="milestone-dot"></div>
+                        <div class="milestone-content">
+                            <h4>✅ Project Initialized</h4>
+                            <p>Repository setup, team formation complete</p>
+                        </div>
+                    </div>
+                    <div class="milestone-item active">
+                        <div class="milestone-dot"></div>
+                        <div class="milestone-content">
+                            <h4>⚡ Basic Structure</h4>
+                            <p>To work in a smooth Manner</p>
+                        </div> 
+                    </div>
+                    
+                
+                    <div class="milestone-item ">
+                        <div class="milestone-dot"></div>
+                        <div class="milestone-content">
+                            <h4>In Progress: Email Parser</h4>
+                            <p>    Building the core intelligence engine</p>
+                        </div>
+                    </div>
+                    <div class="milestone-item">
+                        <div class="milestone-dot"></div>
+                        <div class="milestone-content">
+                            <h4>🎯 Upcoming: Dashboard UI</h4>
+                            <p>Real-time event display system</p>
+                        </div>
+                    </div>
+                    <div class="milestone-item">
+                        <div class="milestone-dot"></div>
+                        <div class="milestone-content">
+                            <h4>🚀 Future: Club Portal</h4>
+                            <p>Event management interface</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <button  class="cta-button">
+                <a href="feature.html" style="text-decoration: none;" >  Join the Revolution</a>
+            </button>
+        </section>
+    </div>
+
+    <footer>
+        <p class="footer-text">WOC '26 | PULSEBOARD</p>
+        <p style="color: #00ffff; margin-top: 1rem; font-size: 1rem;">Never Miss An Event Again</p>
+    </footer>
+
+
+</body>
+<script src="main.js"></script>
+</html>
