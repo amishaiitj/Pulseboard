@@ -903,4 +903,106 @@
                 grid-template-columns: 1fr;
             }
         }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.footer {
+    /* Black background */
+    background: #000000; 
+    padding: 50px;
+    
+    /* Mota (Thick) Green Border with Glow */
+    border: 4px solid #39FF14; 
+    box-shadow: 0px 0px 30px rgba(57, 255, 20, 0.7); 
+    
+    margin: 20px; 
+}
+
+.footer-container {
+    display: flex;
+    align-items: center;
+    gap: 120px;
+}
+
+.newsletter {
+    width: 50%;
+}
+
+.newsletter h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.newsletter input {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    font-size: 16px;
+    outline: none;
+    color: #ffffff;
+    
+    /* Inside lines are now White */
+    border: none;
+    border-bottom: 2px solid #ffffff; 
+}
+
+.newsletter textarea {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    background: transparent;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    resize: none;
+    outline: none;
+    height: 80px;
+    color: #ffffff;
+
+    /* Inside lines are now White */
+    border: none;
+    border-bottom: 2px solid #ffffff; 
+}
+
+/* Page links */
+.single-links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-left: 80px;
+}
+
+.single-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.single-links a:hover {
+    color: #39FF14; /* Links turn green on hover */
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.socials i {
+    font-size: 22px;
+    margin: 0 15px;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #888888;
+}
+
    
