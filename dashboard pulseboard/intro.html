@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PulseBoard - Dashboard</title>
+    <link rel="stylesheet" href="intro.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+        <div class="nav-logo">PULSEBOARD</div>
+        <div class="search-bar">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" placeholder="Search events, clubs..." oninput="handleSearch(this.value)">
+        </div>
+        <div class="nav-menu">
+            <a href="#" class="nav-item active">Home</a>
+            <a href="#" class="nav-item">My Events</a>
+            <a href="#" class="nav-item">Calendar</a>
+            <a href="#" class="nav-item notif-badge" onclick="toggleNotifications()">🔔</a>
+            <a href="#" class="nav-item">Profile</a>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-title">Discover</div>
+            <div class="sidebar-item active" onclick="filterEvents('all')">
+                <span class="sidebar-icon">🏠</span>
+                <span>Home</span>
+            </div>
+            <div class="sidebar-item" onclick="filterEvents('trending')">
+                <span class="sidebar-icon">🔥</span>
+                <span>Trending</span>
+            </div>
+            <div class="sidebar-item">
+                <span class="sidebar-icon">📅</span>
+                <span>Calendar</span>
+            </div>
+            <div class="sidebar-item">
+                <span class="sidebar-icon">🎯</span>
+                <span>For You</span>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-title">Categories</div>
+            <div class="sidebar-item" onclick="filterEvents('cultural')">
+                <span class="sidebar-icon">🎪</span>
+                <span>Cultural</span>
+            </div>
+            <div class="sidebar-item" onclick="filterEvents('technical')">
+                <span class="sidebar-icon">💻</span>
+                <span>Technical</span>
+            </div>
+            <div class="sidebar-item" onclick="filterEvents('sports')">
+                <span class="sidebar-icon">🏆</span>
+                <span>Sports</span>
+            </div>
+            <div class="sidebar-item" onclick="filterEvents('arts')">
+                <span class="sidebar-icon">🎨</span>
+                <span>Arts</span>
+            </div>
+            <div class="sidebar-item" onclick="filterEvents('academic')">
+                <span class="sidebar-icon">🎓</span>
+                <span>Academic</span>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-title">Opportunities</div>
+            <div class="sidebar-item" onclick="filterEvents('internships')">
+                <span class="sidebar-icon">💼</span>
+                <span>Internships</span>
+            </div>
+            <div class="sidebar-item" onclick="filterEvents('interviews')">
+                <span class="sidebar-icon">🎤</span>
+                <span>Interviews</span>
+            </div>
+            <div class="sidebar-item" onclick="filterEvents('workshops')">
+                <span class="sidebar-icon">📚</span>
+                <span>Workshops</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Notification Panel -->
+    <div class="notif-panel" id="notifPanel">
+        <div class="notif-header">
+            <h3>Notifications</h3>
+            <button class="close-notif" onclick="toggleNotifications()">✕</button>
+        </div>
+        <div class="notif-item unread">
+            <div class="notif-time">5 mins ago</div>
+            <div class="notif-text"><strong>AI/ML Workshop</strong> starts in 1 hour at Computer Lab</div>
+        </div>
+        <div class="notif-item unread">
+            <div class="notif-time">1 hour ago</div>
+            <div class="notif-text"><strong>Google SDE OA</strong> deadline extended to Jan 7</div>
+        </div>
+        <div class="notif-item">
+            <div class="notif-time">3 hours ago</div>
+            <div class="notif-text"><strong>Dramatics Society</strong> posted new photos from last event</div>
+        </div>
+        <div class="notif-item">
+            <div class="notif-time">Yesterday</div>
+            <div class="notif-text"><strong>DevClub</strong> announced Hackathon winners</div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Live Events Banner -->
+        <div class="live-banner">
+            <div class="live-dot"></div>
+            <div class="live-text">🔴 LIVE NOW: Tech Fest Hackathon - LAB 301</div>
+        </div>
+
+        <!-- Upcoming Today Strip -->
+        <div class="section-header">
+            <h2 class="section-title">⏰ Happening Today</h2>
+        </div>
+        <div class="upcoming-strip">
+            <div class="upcoming-item">
+                <div class="upcoming-time">2:00<br>PM</div>
+                <div class="upcoming-details">
+                    <h4>Guest Lecture</h4>
+                    <p>Auditorium - ACM Club</p>
+                </div>
+            </div>
+            <div class="upcoming-item">
+                <div class="upcoming-time">4:30<br>PM</div>
+                <div class="upcoming-details">
+                    <h4>Basketball Match</h4>
+                    <p>Sports Complex</p>
+                </div>
+            </div>
+            <div class="upcoming-item">
+                <div class="upcoming-time">6:00<br>PM</div>
+                <div class="upcoming-details">
+                    <h4>Music Jam Session</h4>
+                    <p>Student Center</p>
+                </div>
+            </div>
+            <div class="upcoming-item">
+                <div class="upcoming-time">7:00<br>PM</div>
+                <div class="upcoming-details">
+                    <h4>Coding Workshop</h4>
+                    <p>Lab 201 - DevClub</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters">
+            <button class="filter-btn active" onclick="setFilter(this, 'all')">All Events</button>
+            <button class="filter-btn" onclick="setFilter(this, 'technical')">Technical</button>
+            <button class="filter-btn" onclick="setFilter(this, 'cultural')">Cultural</button>
+            <button class="filter-btn" onclick="setFilter(this, 'sports')">Sports</button>
+            <button class="filter-btn" onclick="setFilter(this, 'workshops')">Workshops</button>
+            <button class="filter-btn" onclick="setFilter(this, 'interviews')">Interviews</button>
+        </div>
+
+        <!-- Featured Events -->
+        <div class="section-header">
+            <h2 class="section-title">🔥 Featured Events</h2>
+            <a href="#" class="view-all">View All →</a>
+        </div>
+        <div class="events-grid" id="eventsGrid">
+            <div class="event-card" data-category="cultural">
+                <div class="event-thumbnail">
+                    🎭
+                    <span class="event-badge">TOMORROW</span>
+                </div>
+                <div class="event-info">
+                    <div class="event-club">DRAMATICS SOCIETY</div>
+                    <h3 class="event-title">Annual Theatre Festival</h3>
+                    <div class="event-meta">
+                        <div class="event-meta-item">📅 Jan 4, 2026 | 6:00 PM</div>
+                        <div class="event-meta-item">📍 Main Auditorium</div>
+                        <div class="event-meta-item">👥 250+ Interested</div>
+                    </div>
+                    <div class="event-tags">
+                        <span class="tag">Cultural</span>
+                        <span class="tag">Performance</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card" data-category="technical workshops">
+                <div class="event-thumbnail">
+                    💻
+                    <span class="event-badge">THIS WEEK</span>
+                </div>
+                <div class="event-info">
+                    <div class="event-club">ACM CHAPTER</div>
+                    <h3 class="event-title">AI/ML Workshop Series</h3>
+                    <div class="event-meta">
+                        <div class="event-meta-item">📅 Jan 5-7, 2026</div>
+                        <div class="event-meta-item">📍 Computer Lab</div>
+                        <div class="event-meta-item">👥 180+ Registered</div>
+                    </div>
+                    <div class="event-tags">
+                        <span class="tag">Technical</span>
+                        <span class="tag">Workshop</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card" data-category="sports">
+                <div class="event-thumbnail">
+                    🏆
+                    <span class="event-badge">LIVE</span>
+                </div>
+                <div class="event-info">
+                    <div class="event-club">SPORTS COMMITTEE</div>
+                    <h3 class="event-title">Inter-College Cricket Tournament</h3>
+                    <div class="event-meta">
+                        <div class="event-meta-item">📅 Jan 3-10, 2026</div>
+                        <div class="event-meta-item">📍 Sports Ground</div>
+                        <div class="event-meta-item">👥 500+ Attending</div>
+                    </div>
+                    <div class="event-tags">
+                        <span class="tag">Sports</span>
+                        <span class="tag">Tournament</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card" data-category="interviews">
+                <div class="event-thumbnail">
+                    🎤
+                    <span class="event-badge">UPCOMING</span>
+                </div>
+                <div class="event-info">
+                    <div class="event-club">GOOGLE STUDENT DEVELOPERS</div>
+                    <h3 class="event-title">Software Engineering Interview Prep</h3>
+                    <div class="event-meta">
+                        <div class="event-meta-item">📅 Jan 8, 2026 | 3:00 PM</div>
+                        <div class="event-meta-item">📍 Online (Zoom)</div>
+                        <div class="event-meta-item">👥 320+ Interested</div>
+                    </div>
+                    <div class="event-tags">
+                        <span class="tag">Interview</span>
+                        <span class="tag">Career</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card" data-category="cultural">
+                <div class="event-thumbnail">
+                    🎨
+                    <span class="event-badge">JAN 6</span>
+                </div>
+                <div class="event-info">
+                    <div class="event-club">FINE ARTS CLUB</div>
+                    <h3 class="event-title">Campus Art Exhibition</h3>
+                    <div class="event-meta">
+                        <div class="event-meta-item">📅 Jan 6-8, 2026</div>
+                        <div class="event-meta-item">📍 Art Gallery</div>
+                        <div class="event-meta-item">👥 140+ Interested</div>
+                    </div>
+                    <div class="event-tags">
+                        <span class="tag">Arts</span>
+                        <span class="tag">Exhibition</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card" data-category="technical">
+                <div class="event-thumbnail">
+                    🚀
+                    <span class="event-badge">JAN 10</span>
+                </div>
+                <div class="event-info">
+                    <div class="event-club">ENTREPRENEURSHIP CELL</div>
+                    <h3 class="event-title">Startup Pitch Competition</h3>
+                    <div class="event-meta">
+                        <div class="event-meta-item">📅 Jan 10, 2026 | 10:00 AM</div>
+                        <div class="event-meta-item">📍 Innovation Hub</div>
+                        <div class="event-meta-item">👥 90+ Teams</div>
+                    </div>
+                    <div class="event-tags">
+                        <span class="tag">Business</span>
+                        <span class="tag">Competition</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clubs to Follow -->
+        <div class="section-header">
+            <h2 class="section-title">🎯 Clubs You Might Like</h2>
+            <a href="#" class="view-all">View All →</a>
+        </div>
+        <div class="clubs-grid">
+            <div class="club-card">
+                <div class="club-icon">💻</div>
+                <div class="club-name">DevClub</div>
+                <div class="club-followers">1.2K followers</div>
+                <button class="follow-btn" onclick="toggleFollow(this)">+ Follow</button>
+            </div>
+            <div class="club-card">
+                <div class="club-icon">🎭</div>
+                <div class="club-name">Dramatics</div>
+                <div class="club-followers">850 followers</div>
+                <button class="follow-btn following" onclick="toggleFollow(this)">✓ Following</button>
+            </div>
+            <div class="club-card">
+                <div class="club-icon">🎵</div>
+                <div class="club-name">Music Society</div>
+                <div class="club-followers">920 followers</div>
+                <button class="follow-btn" onclick="toggleFollow(this)">+ Follow</button>
+            </div>
+            <div class="club-card">
+                <div class="club-icon">📸</div>
+                <div class="club-name">Photography</div>
+                <div class="club-followers">640 followers</div>
+                <button class="follow-btn" onclick="toggleFollow(this)">+ Follow</button>
+            </div>
+            <div class="club-card">
+                <div class="club-icon">🤖</div>
+                <div class="club-name">Robotics Club</div>
+                <div class="club-followers">780 followers</div>
+                <button class="follow-btn" onclick="toggleFollow(this)">+ Follow</button>
+            </div>
+            <div class="club-card">
+                <div class="club-icon">🎨</div>
+                <div class="club-name">Fine Arts</div>
+                <div class="club-followers">560 followers</div>
+                <button class="follow-btn following" onclick="toggleFollow(this)">✓ Following</button>
+            </div>
+        </div>
+
+        <!-- Opportunities Section -->
+        <div class="section-header">
+            <h2 class="section-title">💼 Opportunities & Interviews</h2>
+            <a href="#" class="view-all">View All →</a>
+        </div>
+        <div class="events-grid">
+            <div class="event-card" data-category="interviews">
+                <div class="event-thumbnail">
+                    💼
+                    <span class="event-badge">URGENT</span>
+                </div>
+                <div class="event-info">
+                    <div class="event-club">PLACEMENT CELL</div>
+                    <h3 class="event-title">Google SDE Internship OA</h3>
+                    <div class="event-meta">
+                        <div class="event-meta-item">📅 Deadline: Jan 5, 2026</div>
+                        <div class="event-meta-item">💰 Stipend: ₹1L/month</div>
+                        <div class="event-meta-item">🎯 220 Applied</div>
+                    </div>
+                    <div class="event-tags">
+                        <span class="tag">OA</span>
+                        <span class="tag">Internship</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card" data-category="interviews">
+                <div class="event-thumbnail">
+                    🎯
+                    <span class="event-badge">NEW</span>
+                </div>
+                <div class="event-info">
+                    <div class="event-club">PLACEMENT CELL</div>
+                    <h3 class="event-title">Microsoft Interview Drive</h3>
+                    <div class="event-meta">
+                        <div class="event-meta-item">📅 Jan 12, 2026</div>
+                        <div class="event-meta-item">💰 CTC: ₹44 LPA</div>
+                        <div class="event-meta-item">🎯 Eligible: CSE, ECE</div>
+                    </div>
+                    <div class="event-tags">
+                        <span class="tag">Interview</span>
+                        <span class="tag">Full-Time</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card" data-category="workshops">
+                <div class="event-thumbnail">
+                    📚
+                    <span class="event-badge">FREE</span>
+                </div>
+                <div class="event-info">
+                    <div class="event-club">CAREER DEVELOPMENT</div>
+                    <h3 class="event-title">Resume Building Workshop</h3>
+                    <div class="event-meta">
+                        <div class="event-meta-item">📅 Jan 6, 2026 | 2:00 PM</div>
+                        <div class="event-meta-item">📍 Seminar Hall</div>
+                        <div class="event-meta-item">👥 150+ Registered</div>
+                    </div>
+                    <div class="event-tags">
+                        <span class="tag">Career</span>
+                        <span class="tag">Workshop</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommended For You -->
+        <div class="section-header">
+            <h2 class="section-title">✨ Recommended For You</h2>
+        </div>
+        <div class="events-grid">
+            <div class="event-card" data-category="technical">
+                <div class="event-thumbnail">
+                    🎮
+                    <span class="event-badge">JAN 15</span>
+                </div>
+                <div class="event-info">
+                    <div class="event-club">GAME DEV CLUB</div>
+                    <h3 class="event-title">Game Development Bootcamp</h3>
+                    <div class="event-meta">
+                        <div class="event-meta-item">📅 Jan 15-17, 2026</div>
+                        <div class="event-meta-item">📍 Innovation Lab</div>
+                        <div class="event-meta-item">👥 95+ Interested</div>
+                    </div>
+                    <div class="event-tags">
+                        <span class="tag">Technical</span>
+                        <span class="tag">Bootcamp</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card" data-category="cultural">
+                <div class="event-thumbnail">
+                    🎬
+                    <span class="event-badge">JAN 12</span>
+                </div>
+                <div class="event-info">
+                    <div class="event-club">FILM SOCIETY</div>
+                    <h3 class="event-title">Short Film Screening Night</h3>
+                    <div class="event-meta">
+                        <div class="event-meta-item">📅 Jan 12, 2026 | 7:00 PM</div>
+                        <div class="event-meta-item">📍 Auditorium</div>
+                        <div class="event-meta-item">👥 200+ Interested</div>
+                    </div>
+                    <div class="event-tags">
+                        <span class="tag">Cultural</span>
+                        <span class="tag">Entertainment</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Toggle Sidebar (Mobile)
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        // Toggle Notifications Panel
+        function toggleNotifications() {
+            const panel = document.getElementById('notifPanel');
+            panel.classList.toggle('active');
+        }
+
+        // Toggle Follow Button
+        function toggleFollow(btn) {
+            btn.classList.toggle('following');
+            if (btn.classList.contains('following')) {
+                btn.textContent = '✓ Following';
+            } else {
+                btn.textContent = '+ Follow';
+            }
+        }
+
+        // Filter Events
+        function setFilter(btn, category) {
+            // Update button states
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            filterEvents(category);
+        }
+
+        function filterEvents(category) {
+            const cards = document.querySelectorAll('.event-card');
+            
+            cards.forEach(card => {
+                if (category === 'all' || category === 'trending') {
+                    card.style.display = 'block';
+                } else {
+                    const cardCategories = card.getAttribute('data-category') || '';
+                    if (cardCategories.includes(category)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+
+            // Update sidebar active state
+            document.querySelectorAll('.sidebar-item').forEach(item => {
+                item.classList.remove('active');
+            });
+        }
+
+        // Search Functionality
+        function handleSearch(query) {
+            const searchTerm = query.toLowerCase();
+            const cards = document.querySelectorAll('.event-card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('.event-title').textContent.toLowerCase();
+                const club = card.querySelector('.event-club').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || club.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // If search is empty, show all
+            if (searchTerm === '') {
+                cards.forEach(card => card.style.display = 'block');
+            }
+        }
+
+        // Close sidebar when clicking outside (mobile)
+        document.addEventListener('click', function(e) {
+            const sidebar = document.getElementById('sidebar');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (window.innerWidth <= 768 && 
+                !sidebar.contains(e.target) && 
+                !menuToggle.contains(e.target) &&
+                sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+            }
+        });
+
+        // Close notification panel when clicking outside
+        document.addEventListener('click', function(e) {
+            const panel = document.getElementById('notifPanel');
+            const notifBtn = document.querySelector('.notif-badge');
+            
+            if (!panel.contains(e.target) && 
+                !notifBtn.contains(e.target) &&
+                panel.classList.contains('active')) {
+                panel.classList.remove('active');
+            }
+        });
+
+        // Add click handlers to sidebar items
+        document.querySelectorAll('.sidebar-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Smooth scroll animation on load
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Add hover effect sounds (optional - comment out if not needed)
+        document.querySelectorAll('.event-card, .club-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+            });
+        });
+    </script>
+</body>
+</html>
